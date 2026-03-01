@@ -4,7 +4,7 @@
       <h1>User Management</h1>
       <p class="subtitle">View and manage all system users.</p>
     </div>
-    <button class="add-user-btn glass-morphism interactive-hover">
+    <button class="add-user-btn glass-morphism interactive-hover" (click)="openAddModal()">
       <i>+</i> Add New User
     </button>
   </header>
@@ -43,12 +43,61 @@
           </td>
           <td>
             <div class="action-btns">
-              <button class="action-btn edit" title="Edit">✏️</button>
-              <button class="action-btn delete" title="Delete">🗑️</button>
+              <button class="action-btn edit" title="Edit" (click)="openEditModal(user)">✏️</button>
+              <button class="action-btn delete" title="Delete" (click)="onDelete(user.id)">🗑️</button>
             </div>
           </td>
         </tr>
       </tbody>
     </table>
   </section>
+
+  <!-- CRUD Modal -->
+  <div class="modal-overlay" *ngIf="showModal" (click)="closeModal()">
+    <div class="modal-content glass-morphism premium-shadow" (click)="$event.stopPropagation()">
+      <div class="modal-header">
+        <h2>{{ isEditing ? 'Edit User' : 'Add New User' }}</h2>
+        <button class="close-btn" (click)="closeModal()">&times;</button>
+      </div>
+      
+      <form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="user-form">
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" formControlName="name" placeholder="Enter name" class="glass-input">
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" formControlName="email" placeholder="Enter email" class="glass-input">
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="role">Role</label>
+            <select id="role" formControlName="role" class="glass-input">
+              <option value="Super Admin">Super Admin</option>
+              <option value="Editor">Editor</option>
+              <option value="Viewer">Viewer</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="status">Status</label>
+            <select id="status" formControlName="status" class="glass-input">
+              <option value="active">Active</option>
+              <option value="away">Away</option>
+              <option value="inactive">Inactive</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button type="button" class="cancel-btn" (click)="closeModal()">Cancel</button>
+          <button type="submit" class="submit-btn" [disabled]="userForm.invalid">
+            {{ isEditing ? 'Update User' : 'Create User' }}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
 </div>

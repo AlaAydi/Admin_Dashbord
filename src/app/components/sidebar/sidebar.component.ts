@@ -22,6 +22,10 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
             <i class="icon">👥</i>
             <span>Users</span>
           </li>
+          <li class="nav-item interactive-hover" routerLink="/admin-tools" routerLinkActive="active">
+            <i class="icon">🛡️</i>
+            <span>Admin Tools</span>
+          </li>
           <li class="nav-item interactive-hover" routerLink="/settings" routerLinkActive="active">
             <i class="icon">⚙️</i>
             <span>Settings</span>

@@ -1,0 +1,40 @@
+<div class="admin-tools-page">
+  <header class="page-header">
+    <div class="header-content">
+      <h1>Admin Tools</h1>
+      <p class="subtitle">Advanced system management and monitoring.</p>
+    </div>
+  </header>
+
+  <div class="admin-grid">
+    <div class="tools-section metrics">
+      <h3 class="section-title">System Health</h3>
+      <div class="metrics-grid">
+        <div *ngFor="let metric of systemMetrics" class="metric-card glass-morphism interactive-hover">
+          <div class="metric-icon">{{ metric.icon }}</div>
+          <div class="metric-info">
+            <p class="label">{{ metric.label }}</p>
+            <h4 class="value">{{ metric.value }}</h4>
+          </div>
+          <div class="status-indicator" [class]="metric.status"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tools-section logs">
+      <h3 class="section-title">Audit Logs</h3>
+      <div class="logs-container glass-morphism">
+        <div *ngFor="let log of auditLogs" class="log-item">
+          <div class="log-details">
+            <span class="action">{{ log.action }}</span>
+            <span class="target">Target: {{ log.target }}</span>
+          </div>
+          <div class="log-meta">
+            <span class="admin">by {{ log.admin }}</span>
+            <span class="time">{{ log.time }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

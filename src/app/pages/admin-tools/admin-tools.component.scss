@@ -1,0 +1,129 @@
+.admin-tools-page {
+    max-width: 1400px;
+}
+
+.page-header {
+    margin-bottom: 30px;
+
+    h1 {
+        font-size: 2.2rem;
+        font-weight: 700;
+        color: var(--text);
+    }
+
+    .subtitle {
+        color: var(--text-muted);
+    }
+}
+
+.admin-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.section-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: var(--text);
+}
+
+.metrics-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.metric-card {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    position: relative;
+
+    .metric-icon {
+        font-size: 1.5rem;
+    }
+
+    .label {
+        font-size: 0.8rem;
+        color: var(--text-muted);
+    }
+
+    .value {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: var(--text);
+    }
+
+    .status-indicator {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+
+        &.healthy {
+            background: #4ade80;
+            box-shadow: 0 0 10px #4ade80;
+        }
+
+        &.warning {
+            background: #fbbf24;
+            box-shadow: 0 0 10px #fbbf24;
+        }
+    }
+}
+
+.logs-container {
+    padding: 10px;
+    height: 400px;
+    overflow-y: auto;
+}
+
+.log-item {
+    padding: 15px;
+    border-bottom: 1px solid var(--glass-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &:last-child {
+        border-bottom: none;
+    }
+
+    .log-details {
+        display: flex;
+        flex-direction: column;
+
+        .action {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .target {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+    }
+
+    .log-meta {
+        text-align: right;
+        display: flex;
+        flex-direction: column;
+
+        .admin {
+            font-size: 0.8rem;
+            color: var(--primary);
+            font-weight: 500;
+        }
+
+        .time {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+        }
+    }
+}
