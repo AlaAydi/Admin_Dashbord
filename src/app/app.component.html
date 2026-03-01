@@ -1,7 +1,8 @@
 <div class="app-container">
+  <app-toast></app-toast>
   <app-sidebar></app-sidebar>
   
-  <div class="main-layout">
+  <div class="main-layout" [class.sidebar-open]="layoutService.sidebarOpen$ | async">
     <app-header></app-header>
     
     <main class="content-area">

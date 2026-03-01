@@ -1,13 +1,15 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { LayoutService } from '../../services/layout.service';
 
 @Component({
   selector: 'app-sidebar',
   standalone: true,
   imports: [CommonModule, RouterLink, RouterLinkActive],
   template: `
-    <aside class="sidebar glass-morphism premium-shadow">
+    <div class="sidebar-overlay" *ngIf="layoutService.sidebarOpen$ | async" (click)="layoutService.toggleSidebar()"></div>
+    <aside class="sidebar glass-morphism premium-shadow" [class.open]="layoutService.sidebarOpen$ | async">
       <div class="sidebar-header">
         <h2 class="branding">AlaDesign</h2>
       </div>
@@ -59,6 +61,37 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
       left: 0;
       top: 0;
       z-index: 1000;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .sidebar-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(4px);
+      z-index: 999;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @media (max-width: 1024px) {
+      .sidebar {
+        left: calc(-1 * (var(--sidebar-width) + 40px));
+        margin: 0;
+        height: 100vh;
+        border-radius: 0;
+      }
+
+      .sidebar.open {
+        left: 0;
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
 
     .sidebar-header {
@@ -152,4 +185,6 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
     }
   `]
 })
-export class SidebarComponent { }
+export class SidebarComponent {
+  constructor(public layoutService: LayoutService) { }
+}

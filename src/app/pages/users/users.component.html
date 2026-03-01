@@ -4,9 +4,15 @@
       <h1>User Management</h1>
       <p class="subtitle">View and manage all system users.</p>
     </div>
-    <button class="add-user-btn glass-morphism interactive-hover" (click)="openAddModal()">
-      <i>+</i> Add New User
-    </button>
+    <div class="header-actions">
+      <div class="search-box glass-morphism">
+        <i>🔍</i>
+        <input type="text" placeholder="Filter users..." (input)="onSearch($event)">
+      </div>
+      <button class="add-user-btn glass-morphism interactive-hover" (click)="openAddModal()">
+        <i>+</i> Add New User
+      </button>
+    </div>
   </header>
 
   <section class="users-table-container glass-morphism premium-shadow">
@@ -20,7 +26,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let user of users" class="user-row">
+        <tr *ngFor="let user of filteredUsers" class="user-row">
           <td>
             <div class="user-info">
               <div class="avatar-circle glass-morphism">

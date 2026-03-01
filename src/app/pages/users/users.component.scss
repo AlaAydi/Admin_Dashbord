@@ -21,6 +21,41 @@
     }
 }
 
+.header-actions {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.search-box {
+    padding: 8px 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 250px;
+
+    i {
+        font-style: normal;
+        font-size: 0.9rem;
+        color: var(--text-muted);
+    }
+
+    input {
+        background: transparent;
+        border: none;
+        color: var(--text);
+        font-family: inherit;
+        font-size: 0.9rem;
+        width: 100%;
+        outline: none;
+
+        &::placeholder {
+            color: var(--text-muted);
+            opacity: 0.6;
+        }
+    }
+}
+
 .add-user-btn {
     background: var(--primary);
     color: var(--text);

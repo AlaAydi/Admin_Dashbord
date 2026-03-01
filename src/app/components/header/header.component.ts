@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { LayoutService } from '../../services/layout.service';
 
 @Component({
   selector: 'app-header',
@@ -8,6 +9,9 @@ import { CommonModule } from '@angular/common';
   template: `
     <header class="header glass-morphism premium-shadow">
       <div class="header-left">
+        <button class="menu-toggle interactive-hover" (click)="layoutService.toggleSidebar()">
+          ☰
+        </button>
         <div class="search-bar glass-morphism">
           <i class="icon">🔍</i>
           <input type="text" placeholder="Search anything...">
@@ -43,7 +47,31 @@ import { CommonModule } from '@angular/common';
     }
 
     .header-left {
+      display: flex;
+      align-items: center;
+      gap: 20px;
       flex: 1;
+    }
+
+    .menu-toggle {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--text);
+      font-size: 1.2rem;
+      transition: all 0.2s ease;
+    }
+
+    @media (min-width: 1025px) {
+      .menu-toggle {
+        display: none;
+      }
     }
 
     .search-bar {
@@ -121,4 +149,6 @@ import { CommonModule } from '@angular/common';
     }
   `]
 })
-export class HeaderComponent { }
+export class HeaderComponent {
+  constructor(public layoutService: LayoutService) { }
+}
