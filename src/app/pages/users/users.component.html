@@ -1,0 +1,54 @@
+<div class="users-page">
+  <header class="page-header">
+    <div class="header-content">
+      <h1>User Management</h1>
+      <p class="subtitle">View and manage all system users.</p>
+    </div>
+    <button class="add-user-btn glass-morphism interactive-hover">
+      <i>+</i> Add New User
+    </button>
+  </header>
+
+  <section class="users-table-container glass-morphism premium-shadow">
+    <table class="users-table">
+      <thead>
+        <tr>
+          <th>User</th>
+          <th>Role</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users" class="user-row">
+          <td>
+            <div class="user-info">
+              <div class="avatar-circle glass-morphism">
+                {{ user.avatar }}
+              </div>
+              <div class="user-details">
+                <p class="name">{{ user.name }}</p>
+                <p class="email">{{ user.email }}</p>
+              </div>
+            </div>
+          </td>
+          <td>
+            <span class="role-badge">{{ user.role }}</span>
+          </td>
+          <td>
+            <span class="status-indicator" [class]="user.status">
+              <span class="dot"></span>
+              {{ user.status }}
+            </span>
+          </td>
+          <td>
+            <div class="action-btns">
+              <button class="action-btn edit" title="Edit">✏️</button>
+              <button class="action-btn delete" title="Delete">🗑️</button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</div>

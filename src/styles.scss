@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --primary: hsl(230, 85%, 60%);
+  --primary-light: hsl(230, 85%, 75%);
+  --accent: hsl(280, 80%, 65%);
+  --bg-dark: hsl(230, 20%, 8%);
+  --bg-card: hsla(230, 20%, 15%, 0.6);
+  --text: hsl(210, 20%, 98%);
+  --text-muted: hsl(210, 10%, 70%);
+  --glass-bg: hsla(0, 0%, 100%, 0.05);
+  --glass-border: hsla(0, 0%, 100%, 0.1);
+  --sidebar-width: 260px;
+  --header-height: 70px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text);
+  overflow-x: hidden;
+  background: radial-gradient(circle at 0% 0%, hsla(230, 85%, 60%, 0.15) 0%, transparent 50%),
+              radial-gradient(circle at 100% 100%, hsla(280, 80%, 65%, 0.15) 0%, transparent 50%),
+              var(--bg-dark);
+  min-height: 100vh;
+}
+
+.glass-morphism {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+}
+
+.premium-shadow {
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+.interactive-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  &:hover {
+    transform: translateY(-2px);
+    background: hsla(0, 0%, 100%, 0.08);
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--glass-border);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsla(0, 0%, 100%, 0.2);
+}
